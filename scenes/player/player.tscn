@@ -214,6 +214,7 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_d4gag")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=137610226]
+zoom = Vector2(3, 3)
 
 [node name="FSM" type="Node" parent="." unique_id=1790396015]
 script = ExtResource("5_p47bc")
