@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://hlivu23tm713" path="res://scenes/player/player.gd" id="1_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cc0q6egjxfobw" path="res://Sprites/Actor/Characters/Boy/SeparateAnim/Idle.png" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bacld8ysircpa" path="res://Sprites/Actor/Characters/Boy/SeparateAnim/Walk.png" id="3_p47bc"]
+[ext_resource type="PackedScene" uid="uid://bfpoe6m4nmksn" path="res://scenes/Health_component/health_component.tscn" id="5_5gtgg"]
 [ext_resource type="Script" uid="uid://m4yak53eb6ir" path="res://scripts/fsm.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://dtaqd8caxwlep" path="res://scenes/player/states/player_state_idle.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://binni2mr5kcde" path="res://scenes/player/states/player_state_walk.gd" id="7_0owmy"]
@@ -197,6 +198,12 @@ radius = 7.0
 
 [node name="Player" type="CharacterBody2D" unique_id=2066078206]
 script = ExtResource("1_lvxji")
+max_health = null
+max_mana = null
+move_speed = null
+damage = null
+crit_chance = null
+crit_damage = null
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=71450240]
 self_modulate = Color(1, 1, 1, 0.19607843)
@@ -215,6 +222,8 @@ shape = SubResource("CircleShape2D_d4gag")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=137610226]
 zoom = Vector2(3, 3)
+
+[node name="HealthComponent" parent="." unique_id=309380841 instance=ExtResource("5_5gtgg")]
 
 [node name="FSM" type="Node" parent="." unique_id=1790396015]
 script = ExtResource("5_p47bc")
