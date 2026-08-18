@@ -9,18 +9,44 @@ class_name Player
 @export var crit_chance: float = 0.0
 @export var crit_damage: float = 0.0
 
-@export_group()
+@export_group("Exp")
+@export var base_exp: float = 100.0
+@export var exp_multiplier: float = 2.0
+
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimSprite
 @onready var fsm: FSM = $FSM
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var enemy_area: Area2D = %EnemyAttackArea
+@onready var weapon: Node2D = $Weapon
+
+
+@onready var attack_positions: Dictionary = {
+	"down":%Down,
+	"up":%Up,
+	"left":%Left,
+	"right":%Right
+}
+
+
+
+var curr_exp: float
+var next_level_exp: float
+
+var curr_level: int = 1
+var curr_points: int = 0
+
 
 var curr_mana: float 
 var last_direction: String = "down"
 
-func _ready() -> void:
-	health_component.setup(max_health)
-
+#Test exp add system
+#func _ready() -> void:
+	#setup()
+#
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_accept"):
+		#add_exp(10)
 
 func _process(delta: float) -> void:
 	if fsm.curr_state:
@@ -45,10 +71,25 @@ func update_direction(input_vector: Vector2) -> void:
 func play_direction_anim(anim_name: String) -> void:
 	anim_sprite.play("%s_%s" % [anim_name, last_direction])
 	
+func add_exp(value: float) -> void:
+	curr_exp += value
+	while curr_exp >= next_level_exp:
+		level_up()
+		
+	EventBus.on_player_new_level.emit(curr_exp, next_level_exp)
 
-func step() -> void:
+func level_up() -> void:
+	curr_exp -= next_level_exp
+	curr_level += 1
+	curr_points += 4
+	next_level_exp *= exp_multiplier
+	EventBus.on_player_stats_updated.emit()
+
+
+func setup() -> void:
 	reset_health()
 	reset_mana()
+	next_level_exp = base_exp
 
 func reset_health() -> void:
 	health_component.setup(max_health)
@@ -64,3 +105,7 @@ func use_mana(value: float) -> void:
 	curr_mana -= value
 	curr_mana = max(curr_mana, 0)
 	EventBus.on_player_health_updated.emit(curr_mana, max_mana)
+	
+
+func enable_weapon_collision(value: bool) -> void:
+	enemy_area.monitoring = value

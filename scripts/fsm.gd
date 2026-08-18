@@ -13,7 +13,7 @@ func _ready() -> void:
 	for state: State in get_children():
 		state.fsm = self
 	
-	curr_state=get_node(initial_state)
+	curr_state = get_node(initial_state)
 	curr_state.enter_state()
 
 func transition_to(state_name: String) -> void:
