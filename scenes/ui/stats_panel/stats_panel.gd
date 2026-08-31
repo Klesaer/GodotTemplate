@@ -1,0 +1,27 @@
+extends PanelContainer
+class_name StatsPanel
+
+@onready var hp_label: Label = %HPLabel
+@onready var vel_label: Label = %VELLabel
+@onready var mana_label: Label = %ManaLabel
+@onready var crit_label: Label = %CritLabel
+@onready var crit_damage_label: Label = %CritDamageLabel
+
+@onready var curr_level_label: Label = %CurrLevelLabel
+@onready var curr_points_label: Label = %CurrPointsLabel
+
+@onready var str_points_label: Label = %STRPointsLabel
+@onready var dex_points_label: Label = %DEXPointsLabel
+@onready var int_points_label: Label = %INTPointsLabel
+
+
+func _on_str_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_dex_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_int_button_pressed() -> void:
+	pass # Replace with function body.

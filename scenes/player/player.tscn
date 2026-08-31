@@ -247,10 +247,12 @@ animations = [{
 radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4gag"]
-size = Vector2(6, 17)
+size = Vector2(3.5, 12.25)
 
 [node name="Player" type="CharacterBody2D" unique_id=2066078206]
 script = ExtResource("1_lvxji")
+max_health = 20.0
+max_mana = 30.0
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=71450240]
 self_modulate = Color(1, 1, 1, 0.19607843)
@@ -274,7 +276,8 @@ zoom = Vector2(3, 3)
 visible = false
 
 [node name="Icon" type="Sprite2D" parent="Weapon" unique_id=1923741417]
-position = Vector2(-3, -23)
+position = Vector2(-3, -20)
+scale = Vector2(0.5, 0.64285713)
 texture = ExtResource("11_je7p5")
 
 [node name="EnemyAttackArea" type="Area2D" parent="Weapon" unique_id=64926812]
@@ -284,7 +287,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/EnemyAttackArea" unique_id=1101409984]
-position = Vector2(-3, -25)
+position = Vector2(-3, -20)
 shape = SubResource("RectangleShape2D_d4gag")
 
 [node name="AttackPos" type="Node2D" parent="." unique_id=1213006693]

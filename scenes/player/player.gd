@@ -46,7 +46,7 @@ var last_direction: String = "down"
 #
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("ui_accept"):
-		#add_exp(10)
+		#add_exp(20)
 
 func _process(delta: float) -> void:
 	if fsm.curr_state:
@@ -98,13 +98,13 @@ func reset_health() -> void:
 
 func reset_mana() -> void:
 	curr_mana = max_mana
-	EventBus.on_player_health_updated.emit(max_mana, max_mana)
+	EventBus.on_player_mana_updated.emit(max_mana, max_mana)
 	
 
 func use_mana(value: float) -> void:
 	curr_mana -= value
 	curr_mana = max(curr_mana, 0)
-	EventBus.on_player_health_updated.emit(curr_mana, max_mana)
+	EventBus.on_player_mana_updated.emit(curr_mana, max_mana)
 	
 
 func enable_weapon_collision(value: bool) -> void:
