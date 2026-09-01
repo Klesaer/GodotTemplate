@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://58dm2c4pxxmh"]
+
+[ext_resource type="Script" uid="uid://bmweoqa6uhitx" path="res://scenes/drop_item/drop_item.gd" id="1_ft433"]
+[ext_resource type="Texture2D" uid="uid://l58lkiu042xv" path="res://Sprites/Actor/Characters/Shadow.png" id="2_36oub"]
+[ext_resource type="Shader" uid="uid://b812eu88dfpw5" path="res://scenes/resources/shaders/shine.gdshader" id="3_tk0fi"]
+[ext_resource type="Texture2D" uid="uid://brbowyharou0c" path="res://Sprites/Items/Potion/LifePot.png" id="4_h53yj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ft433"]
+shader = ExtResource("3_tk0fi")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/shine_progress = 0.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4gag"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_lac7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_65td7"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.02, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -9), Vector2(0, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjx8q"]
+_data = {
+&"RESET": SubResource("Animation_lac7t"),
+&"idle": SubResource("Animation_65td7")
+}
+
+[node name="DropItem" type="Area2D" unique_id=717339649]
+collision_mask = 2
+script = ExtResource("1_ft433")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=743102701]
+modulate = Color(0.45490196, 0.45490196, 0.45490196, 0.6117647)
+self_modulate = Color(0.7176471, 0.7176471, 0.7176471, 0.53333336)
+texture = ExtResource("2_36oub")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=499451988]
+material = SubResource("ShaderMaterial_ft433")
+position = Vector2(0, -5)
+texture = ExtResource("4_h53yj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=852255145]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_d4gag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=456012395]
+libraries/ = SubResource("AnimationLibrary_vjx8q")
+autoplay = &"idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -46,6 +46,7 @@ custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 
 [node name="Container" type="GridContainer" parent="MarginContainer/VBox" unique_id=1856666894]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
@@ -53,123 +54,93 @@ columns = 5
 
 [node name="InventorySlot" parent="MarginContainer/VBox/Container" unique_id=340484400 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot2" parent="MarginContainer/VBox/Container" unique_id=1738212046 instance=ExtResource("1_v20om")]
+[node name="InventorySlot2" parent="MarginContainer/VBox/Container" unique_id=1289458323 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot3" parent="MarginContainer/VBox/Container" unique_id=594426965 instance=ExtResource("1_v20om")]
+[node name="InventorySlot3" parent="MarginContainer/VBox/Container" unique_id=1734488758 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot4" parent="MarginContainer/VBox/Container" unique_id=1406524568 instance=ExtResource("1_v20om")]
+[node name="InventorySlot4" parent="MarginContainer/VBox/Container" unique_id=23392604 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot5" parent="MarginContainer/VBox/Container" unique_id=1498623050 instance=ExtResource("1_v20om")]
+[node name="InventorySlot5" parent="MarginContainer/VBox/Container" unique_id=41897045 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot6" parent="MarginContainer/VBox/Container" unique_id=221915680 instance=ExtResource("1_v20om")]
+[node name="InventorySlot6" parent="MarginContainer/VBox/Container" unique_id=808949215 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot7" parent="MarginContainer/VBox/Container" unique_id=312874076 instance=ExtResource("1_v20om")]
+[node name="InventorySlot7" parent="MarginContainer/VBox/Container" unique_id=789908872 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot8" parent="MarginContainer/VBox/Container" unique_id=1019428197 instance=ExtResource("1_v20om")]
+[node name="InventorySlot8" parent="MarginContainer/VBox/Container" unique_id=962139201 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot9" parent="MarginContainer/VBox/Container" unique_id=2093868950 instance=ExtResource("1_v20om")]
+[node name="InventorySlot9" parent="MarginContainer/VBox/Container" unique_id=941773340 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot10" parent="MarginContainer/VBox/Container" unique_id=8224891 instance=ExtResource("1_v20om")]
+[node name="InventorySlot10" parent="MarginContainer/VBox/Container" unique_id=818379054 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot11" parent="MarginContainer/VBox/Container" unique_id=349425232 instance=ExtResource("1_v20om")]
+[node name="InventorySlot11" parent="MarginContainer/VBox/Container" unique_id=1600517888 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot12" parent="MarginContainer/VBox/Container" unique_id=1496240905 instance=ExtResource("1_v20om")]
+[node name="InventorySlot12" parent="MarginContainer/VBox/Container" unique_id=713087940 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot13" parent="MarginContainer/VBox/Container" unique_id=1390089438 instance=ExtResource("1_v20om")]
+[node name="InventorySlot13" parent="MarginContainer/VBox/Container" unique_id=1924596589 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot14" parent="MarginContainer/VBox/Container" unique_id=1509608184 instance=ExtResource("1_v20om")]
+[node name="InventorySlot14" parent="MarginContainer/VBox/Container" unique_id=637341140 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot15" parent="MarginContainer/VBox/Container" unique_id=248652656 instance=ExtResource("1_v20om")]
+[node name="InventorySlot15" parent="MarginContainer/VBox/Container" unique_id=2122724025 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot16" parent="MarginContainer/VBox/Container" unique_id=725573739 instance=ExtResource("1_v20om")]
+[node name="InventorySlot16" parent="MarginContainer/VBox/Container" unique_id=1287298282 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot17" parent="MarginContainer/VBox/Container" unique_id=1780677371 instance=ExtResource("1_v20om")]
+[node name="InventorySlot17" parent="MarginContainer/VBox/Container" unique_id=959396029 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot18" parent="MarginContainer/VBox/Container" unique_id=1779219817 instance=ExtResource("1_v20om")]
+[node name="InventorySlot18" parent="MarginContainer/VBox/Container" unique_id=263212687 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot19" parent="MarginContainer/VBox/Container" unique_id=345978570 instance=ExtResource("1_v20om")]
+[node name="InventorySlot19" parent="MarginContainer/VBox/Container" unique_id=1833959278 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot20" parent="MarginContainer/VBox/Container" unique_id=1583486517 instance=ExtResource("1_v20om")]
+[node name="InventorySlot20" parent="MarginContainer/VBox/Container" unique_id=1334601072 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot21" parent="MarginContainer/VBox/Container" unique_id=1516372032 instance=ExtResource("1_v20om")]
+[node name="InventorySlot21" parent="MarginContainer/VBox/Container" unique_id=966232702 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot22" parent="MarginContainer/VBox/Container" unique_id=566039474 instance=ExtResource("1_v20om")]
+[node name="InventorySlot22" parent="MarginContainer/VBox/Container" unique_id=1438125702 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot23" parent="MarginContainer/VBox/Container" unique_id=691610810 instance=ExtResource("1_v20om")]
+[node name="InventorySlot23" parent="MarginContainer/VBox/Container" unique_id=2110790809 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot24" parent="MarginContainer/VBox/Container" unique_id=1991849240 instance=ExtResource("1_v20om")]
+[node name="InventorySlot24" parent="MarginContainer/VBox/Container" unique_id=188052342 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot25" parent="MarginContainer/VBox/Container" unique_id=1910009098 instance=ExtResource("1_v20om")]
+[node name="InventorySlot25" parent="MarginContainer/VBox/Container" unique_id=18711429 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot26" parent="MarginContainer/VBox/Container" unique_id=2144672082 instance=ExtResource("1_v20om")]
+[node name="InventorySlot26" parent="MarginContainer/VBox/Container" unique_id=1123532429 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot27" parent="MarginContainer/VBox/Container" unique_id=664958898 instance=ExtResource("1_v20om")]
+[node name="InventorySlot27" parent="MarginContainer/VBox/Container" unique_id=260476178 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot28" parent="MarginContainer/VBox/Container" unique_id=1754881641 instance=ExtResource("1_v20om")]
+[node name="InventorySlot28" parent="MarginContainer/VBox/Container" unique_id=690318743 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot29" parent="MarginContainer/VBox/Container" unique_id=2133410804 instance=ExtResource("1_v20om")]
+[node name="InventorySlot29" parent="MarginContainer/VBox/Container" unique_id=129666822 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
-[node name="InventorySlot30" parent="MarginContainer/VBox/Container" unique_id=583005159 instance=ExtResource("1_v20om")]
+[node name="InventorySlot30" parent="MarginContainer/VBox/Container" unique_id=816283302 instance=ExtResource("1_v20om")]
 layout_mode = 2
-script = null
 
 [node name="HBox" type="HBoxContainer" parent="MarginContainer/VBox" unique_id=674242723]
 layout_mode = 2
@@ -182,6 +153,7 @@ texture = ExtResource("1_uifvl")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/VBox/HBox" unique_id=1177242218]
+[node name="GoldLabel" type="Label" parent="MarginContainer/VBox/HBox" unique_id=1177242218]
+unique_name_in_owner = true
 layout_mode = 2
 text = "3000"
