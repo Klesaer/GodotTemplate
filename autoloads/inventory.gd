@@ -16,6 +16,8 @@ func _ready() -> void:
 	#if event.is_action_pressed("ui_accept"):
 		#add_item(preload("uid://dk6ftcupwo2sg"), 10)
 
+#region FIND
+	
 func get_empty_slot_indexes() -> Array[int]:
 	var empty: Array[int] = []
 	for i in inventory.size():
@@ -36,7 +38,21 @@ func find_item_indexes(item: ItemData, with_space: bool = false) -> Array[int]:
 			else:
 				found.append(i)
 	return found
+	
+func get_slot(index: int) -> SlotData:
+	if index >= 0 and index < inventory.size():
+		return inventory[index]
+	return null
 
+func get_slot_item(index: int) -> ItemData:
+	var slot = get_slot(index)
+	if slot:
+		return slot.item
+	return null
+
+#endregion
+
+#region ADD / REMOVE
 func add_item(item: ItemData, amount: int = 1) -> void: # can return remaining here.
 	if not item or amount <= 0:
 		return
@@ -69,7 +85,71 @@ func add_item(item: ItemData, amount: int = 1) -> void: # can return remaining h
 	var added = amount - remaining
 	if added > 0:
 		on_inventory_changed.emit()
+#endregion
 
+#region EQUIP
+
+func equip_item(slot_index: int) -> void:
+	var slot: SlotData = get_slot(slot_index)
+	if not slot:
+		return
+	if not slot.item is EquipData:
+		return
+	
+	var equip: EquipData = slot.item as EquipData
+	var equip_key: String = equip.get_equip_key()
+	# store current equipped item
+	var current_equipped_item = GameData.equipment[equip_key]
+	# equip new item
+	GameData.equipment[equip_key] = equip
+	# clear inventory
+	inventory[slot_index] = null
+	# add current equipped item back to inventory
+	if current_equipped_item: add_item(current_equipped_item, 1)
+	
+	on_inventory_changed.emit()
+	on_equipment_changed.emit()
+
+func unequip_item(equip_type: EquipData.EquipType) -> void:
+	var equip_key = GameData.equipment.keys()[equip_type]
+	var equipped_item = GameData.equipment[equip_key]
+	
+	if not equipped_item: return
+	
+	# add to Inventory
+	add_item(equipped_item, 1)
+	# clear equipment slot
+	GameData.equipment[equip_key] = null
+	
+	on_equipment_changed.emit()
+	
+	
+	
+	
+	
+	
+	
+#endregion
+
+#region USE ITEM
+
+func use_item(slot_index: int) -> void:
+	var slot: SlotData = inventory[slot_index]
+	if not slot: return
+	if not slot.item.is_consumerable: return
+	
+	slot.quantity -= 1
+	if slot.quantity <= 0: inventory[slot_index] = null # item is used. clear out.
+	
+	on_inventory_changed.emit()
+
+func can_use_item(slot_index: int) -> bool:
+	var slot: SlotData = get_slot(slot_index)
+	return slot and slot.item.is_consumerable
+
+#endregion
+
+#region MOVE SLOTs
 func swap_slots(from_index: int, to_index: int) -> void:
 	if from_index < 0 or from_index >= inventory.size():
 		return
@@ -85,7 +165,7 @@ func merge_slots(from_index: int, to_index: int) -> void:
 	var from_slot: SlotData = get_slot(from_index)
 	var to_slot: SlotData = get_slot(to_index)
 	
-	if not from_index or not to_slot:
+	if not from_slot or not to_slot:
 		return
 	
 	if from_slot.item != to_slot.item:
@@ -108,13 +188,4 @@ func merge_slots(from_index: int, to_index: int) -> void:
 		
 	on_inventory_changed.emit()
 
-func get_slot(index: int) -> SlotData:
-	if index >= 0 and index < inventory.size():
-		return inventory[index]
-	return null
-
-func get_slot_item(index: int) -> ItemData:
-	var slot = get_slot(index)
-	if slot:
-		return slot.item
-	return null
+#endregion

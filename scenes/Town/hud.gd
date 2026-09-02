@@ -13,6 +13,9 @@ class_name HUD
 @onready var health_label: Label = %HealthLabel
 @onready var mana_label: Label = %ManaLabel
 
+
+
+
 func _ready() -> void:
 	EventBus.on_player_health_updated.connect(_on_player_health_updated)
 	EventBus.on_player_mana_updated.connect(_on_player_mana_updated)

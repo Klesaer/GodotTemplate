@@ -9,3 +9,6 @@ enum Type{
 @export var type: Type
 @export var is_consumerable: bool
 @export var max_stack: int = 64
+
+@export_group("Consumable")
+@export var value: float

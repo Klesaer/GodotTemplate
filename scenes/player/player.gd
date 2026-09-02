@@ -44,9 +44,9 @@ var last_direction: String = "down"
 #func _ready() -> void:
 	#setup()
 #
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("ui_accept"):
-		#add_exp(20)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		use_mana(2)
 
 func _process(delta: float) -> void:
 	if fsm.curr_state:
@@ -94,18 +94,29 @@ func setup() -> void:
 func reset_health() -> void:
 	health_component.setup(max_health)
 	EventBus.on_player_health_updated.emit(max_health, max_health)
-	
 
 func reset_mana() -> void:
 	curr_mana = max_mana
 	EventBus.on_player_mana_updated.emit(max_mana, max_mana)
-	
+
 
 func use_mana(value: float) -> void:
 	curr_mana -= value
 	curr_mana = max(curr_mana, 0)
 	EventBus.on_player_mana_updated.emit(curr_mana, max_mana)
-	
+
+func add_mana(value: float) -> void:
+	curr_mana += value
+	curr_mana = min(curr_mana, max_mana)
+	EventBus.on_player_mana_updated.emit(curr_mana, max_mana)
 
 func enable_weapon_collision(value: bool) -> void:
 	enemy_area.monitoring = value
+
+
+func _on_health_component_on_dead() -> void:
+	queue_free() # Replace with function body.
+
+
+func _on_health_component_on_health_changed(curr_health: float) -> void:
+	EventBus.on_player_health_updated.emit(curr_health, max_health) # Replace with function body.
