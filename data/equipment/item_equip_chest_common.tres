@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipData" format=3 uid="uid://ccf5yyq1mmndj"]
+
+[ext_resource type="Texture2D" uid="uid://gxhpkqg1bdkx" path="res://Sprites/Equipment/placeholder_body.png" id="1_fm3y8"]
+[ext_resource type="Script" uid="uid://mw2o7yl4em4u" path="res://data/equipment/equip_data.gd" id="2_vhh11"]
+
+[resource]
+script = ExtResource("2_vhh11")
+type = 4
+max_stack = 1
+icon = ExtResource("1_fm3y8")
+id = "equip_chest"
+name = "Common chest"
+price = 25
+metadata/_custom_type_script = "uid://564s3hlnyre6"

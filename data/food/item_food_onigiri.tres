@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dtpyd7ckfusel"]
+
+[ext_resource type="Texture2D" uid="uid://c6fwit5phopep" path="res://Sprites/Items/Food/Noodle.png" id="1_t7wdh"]
+[ext_resource type="Script" uid="uid://564s3hlnyre6" path="res://data/item_data.gd" id="2_mavgg"]
+
+[resource]
+script = ExtResource("2_mavgg")
+is_consumerable = true
+value = 1.0
+icon = ExtResource("1_t7wdh")
+id = "food"
+name = "Ongiri"
+price = 1
+metadata/_custom_type_script = "uid://564s3hlnyre6"

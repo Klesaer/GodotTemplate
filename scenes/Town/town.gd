@@ -12,8 +12,8 @@ func _ready() -> void:
 func create_player() -> void:
 	var player : Player = player_scene.instantiate()
 	add_child(player)
-	player.setup()
 	Refs.player = player
+	player.setup()
 	EventBus.on_player_created.emit()
 
 func _on_inventory_used_item(item: ItemData) -> void:

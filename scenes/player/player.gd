@@ -43,13 +43,17 @@ var curr_points: int = 0
 var curr_mana: float 
 var last_direction: String = "down"
 
+var strength_value: int = 0
+var dexterity_value: int = 0
+var intelligence_value: int = 0
+
 #Test exp add system
 #func _ready() -> void:
 	#setup()
 #
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		use_mana(2)
+		add_exp(30)
 
 func _process(delta: float) -> void:
 	if fsm.curr_state:
