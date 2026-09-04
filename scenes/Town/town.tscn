@@ -2423,6 +2423,7 @@ alignment = 2
 
 [node name="EquipmentPanel" parent="HUD/Panels" unique_id=1365675296 instance=ExtResource("12_lt4no")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="InventoryPanel" parent="HUD/Panels" unique_id=1160607167 node_paths=PackedStringArray("grabbed_slot") instance=ExtResource("12_y5ouu")]

@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name Player
 
 @export_group("Stats")
+@export var strength_value: int = 0
+@export var dexterity_value: int = 0
+@export var intelligence_value: int = 0
 @export var max_health: float = 10.0
 @export var max_mana: float = 10.0
 @export var move_speed: float = 60.0
@@ -70,7 +73,31 @@ func update_direction(input_vector: Vector2) -> void:
 
 func play_direction_anim(anim_name: String) -> void:
 	anim_sprite.play("%s_%s" % [anim_name, last_direction])
+
+func upgrade_stats(stat_name: String) -> void:
+	if curr_points <= 0:
+		return
 	
+	curr_points -= 1
+	match stat_name:
+		"STR":
+			strength_value += 1
+			damage += 1.5
+			max_health += 3.0
+			reset_health()
+		"DEX":
+			dexterity_value += 1
+			move_speed += 2.0
+			crit_chance += 2.0
+		"INT":
+			intelligence_value += 1
+			max_mana += 15.0
+			crit_damage += 5
+			reset_mana()
+	
+	EventBus.on_player_stats_updated.emit()
+
+
 func add_exp(value: float) -> void:
 	curr_exp += value
 	while curr_exp >= next_level_exp:

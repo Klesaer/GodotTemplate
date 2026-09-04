@@ -252,7 +252,7 @@ size = Vector2(3.5, 12.25)
 [node name="Player" type="CharacterBody2D" unique_id=2066078206]
 collision_layer = 2
 script = ExtResource("1_lvxji")
-max_health = 20.0
+max_health = 100.0
 max_mana = 30.0
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=71450240]
