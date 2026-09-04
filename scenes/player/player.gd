@@ -31,21 +31,18 @@ class_name Player
 	"right":%Right
 }
 
-
-
 var curr_exp: float
 var next_level_exp: float
 
 var curr_level: int = 1
 var curr_points: int = 0
 
-
 var curr_mana: float 
 var last_direction: String = "down"
 
-var strength_value: int = 0
-var dexterity_value: int = 0
-var intelligence_value: int = 0
+#var strength_value: int = 0
+#var dexterity_value: int = 0
+#var intelligence_value: int = 0
 
 #Test exp add system
 #func _ready() -> void:
@@ -53,7 +50,7 @@ var intelligence_value: int = 0
 #
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		add_exp(30)
+		add_exp(30.0)
 
 func _process(delta: float) -> void:
 	if fsm.curr_state:
@@ -100,6 +97,21 @@ func upgrade_stats(stat_name: String) -> void:
 			reset_mana()
 	
 	EventBus.on_player_stats_updated.emit()
+
+func get_damage(skill_dmg: float = 0.0) -> float:
+	var total_dmg = damage + skill_dmg
+	
+	# Add bonus damage of each equipment.
+	for equip: EquipData in GameData.equipment.values():
+		if equip:
+			total_dmg += equip.bonus_damage
+	
+	# check our critical attack
+	if randf()*100 <= crit_chance:
+		total_dmg *= (1.0 + (crit_damage / 100.0))
+		
+	return total_dmg
+
 
 
 func add_exp(value: float) -> void:

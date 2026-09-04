@@ -17,6 +17,7 @@ class_name StatsPanel
 
 func _ready() -> void:
 	EventBus.on_player_created.connect(_on_player_created)
+	EventBus.on_player_stats_updated.connect(_on_player_stats_updated)
 
 func update_stats() -> void:
 	if not is_instance_valid(Refs.player):
@@ -39,16 +40,22 @@ func update_stats() -> void:
 	
 
 func _on_str_button_pressed() -> void:
-	pass # Replace with function body.
-
+	Refs.player.upgrade_stats("STR")
 
 func _on_dex_button_pressed() -> void:
-	pass # Replace with function body.
-
+	Refs.player.upgrade_stats("DEX")
 
 func _on_int_button_pressed() -> void:
-	pass # Replace with function body.
+	Refs.player.upgrade_stats("INT")
 
 func _on_player_created() -> void:
 	if is_instance_valid(Refs.player):
 		update_stats()
+
+func _on_player_stats_updated() -> void:
+	update_stats()
+	
+	
+	
+	
+	

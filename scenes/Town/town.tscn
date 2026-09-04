@@ -23,6 +23,8 @@
 [ext_resource type="Resource" uid="uid://b0sjsa0n88ncw" path="res://data/potions/item_mana_small_5.tres" id="21_lheq0"]
 [ext_resource type="Resource" uid="uid://csxnvsu0y3sbi" path="res://data/equipment/item_equip_helmet_common.tres" id="22_b8qpp"]
 [ext_resource type="Resource" uid="uid://dj0vvky0s1hi2" path="res://data/equipment/item_equip_legs_common.tres" id="23_x274i"]
+[ext_resource type="Script" uid="uid://pmrqv0473irq" path="res://scenes/Enemy/enemy_zone.gd" id="24_nj734"]
+[ext_resource type="PackedScene" uid="uid://b036l2tqt74k0" path="res://scenes/Enemy/enemy.tscn" id="25_li5hu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7xra"]
 texture = ExtResource("1_pd0w3")
@@ -2137,6 +2139,9 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvlch"]
+size = Vector2(133, 47)
+
 [node name="Town" type="Node2D" unique_id=598471543]
 script = ExtResource("1_kcfjc")
 player_scene = ExtResource("3_u1vo0")
@@ -2473,6 +2478,17 @@ item = ExtResource("22_b8qpp")
 [node name="DropItem4" parent="." unique_id=765967590 instance=ExtResource("18_uos3g")]
 position = Vector2(-48, -35)
 item = ExtResource("23_x274i")
+
+[node name="EnemyZones" type="Node2D" parent="." unique_id=102029234]
+
+[node name="Zone1" type="Area2D" parent="EnemyZones" unique_id=1836530517]
+script = ExtResource("24_nj734")
+enemy_scene = ExtResource("25_li5hu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyZones/Zone1" unique_id=332910528]
+position = Vector2(544.5, -71.5)
+shape = SubResource("RectangleShape2D_hvlch")
+debug_color = Color(0, 0.6, 0.69803923, 0.23529412)
 
 [connection signal="pressed" from="HUD/MainButtons/MarginContainer/HBoxContainer/EquipmentButton" to="HUD" method="_on_equipment_button_pressed"]
 [connection signal="pressed" from="HUD/MainButtons/MarginContainer/HBoxContainer/InventoryButton" to="HUD" method="_on_inventory_button_pressed"]
