@@ -34,8 +34,12 @@ func _on_skills_button_pressed() -> void:
 	skills_panel.visible = not skills_panel.visible
 
 func _on_player_health_updated(curr: float, max: float) -> void:
-	health_bar.value = curr / max
-	health_label.text = "%d / %d" %[curr , max]
+	#health_bar.value = curr / max
+	#health_label.text = "%d / %d" %[curr , max]
+	
+	health_bar.max_value = max
+	health_bar.value = curr
+	health_label.text = "%d / %d" % [curr, max]
 
 func _on_player_mana_updated(curr: float, max: float) -> void:
 	mana_bar.value = curr / max

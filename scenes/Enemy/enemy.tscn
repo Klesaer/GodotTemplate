@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bfpoe6m4nmksn" path="res://scenes/Health_component/health_component.tscn" id="4_ixhtt"]
 [ext_resource type="Script" uid="uid://m4yak53eb6ir" path="res://scripts/fsm.gd" id="6_ixhtt"]
 [ext_resource type="Script" uid="uid://cpq2lilt6d281" path="res://scenes/Enemy/states/enemy_wander_state.gd" id="7_wfr8x"]
+[ext_resource type="Script" uid="uid://br77ynm0swgr1" path="res://scenes/Enemy/states/enemy_follow_state.gd" id="8_wfr8x"]
+[ext_resource type="Script" uid="uid://w1ugsvlxhsep" path="res://scenes/Enemy/states/enemy_attack_state.gd" id="9_ebm38"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfr8x"]
 atlas = ExtResource("2_grfqg")
@@ -149,6 +151,25 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_c602i"]
 radius = 30.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvlch"]
+bg_color = Color(0.25490198, 0.023529412, 0.02745098, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c602i"]
+bg_color = Color(0.70980394, 0.13725491, 0.14901961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25490198, 0.023529412, 0.02745098, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="Enemy" type="Area2D" unique_id=667960588]
 collision_layer = 4
 script = ExtResource("1_grfqg")
@@ -191,3 +212,28 @@ initial_state = NodePath("Wander")
 
 [node name="Wander" type="Node" parent="FSM" unique_id=566106191]
 script = ExtResource("7_wfr8x")
+
+[node name="Follow" type="Node" parent="FSM" unique_id=1843353041]
+script = ExtResource("8_wfr8x")
+
+[node name="Attack" type="Node" parent="FSM" unique_id=1511785500]
+script = ExtResource("9_ebm38")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=772008582]
+custom_minimum_size = Vector2(20, 5)
+offset_left = -10.0
+offset_top = -25.0
+offset_right = 10.0
+offset_bottom = -20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hvlch")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c602i")
+max_value = 1.0
+step = 0.001
+value = 1.0
+show_percentage = false
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="on_dead" from="HealthComponent" to="." method="_on_health_component_on_dead"]
+[connection signal="on_health_changed" from="HealthComponent" to="." method="_on_health_component_on_health_changed"]

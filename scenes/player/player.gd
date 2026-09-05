@@ -5,8 +5,8 @@ class_name Player
 @export var strength_value: int = 0
 @export var dexterity_value: int = 0
 @export var intelligence_value: int = 0
-@export var max_health: float = 10.0
-@export var max_mana: float = 10.0
+@export var max_health: float = 100.0
+@export var max_mana: float = 100.0
 @export var move_speed: float = 60.0
 @export var damage: float = 10.0
 @export var crit_chance: float = 0.0
@@ -39,6 +39,14 @@ var curr_points: int = 0
 
 var curr_mana: float 
 var last_direction: String = "down"
+
+var selected_enemy: Enemy :
+	set(value):
+		if selected_enemy:
+			selected_enemy.deselect_enemy()
+		
+		selected_enemy = value
+		selected_enemy.select_enemy()
 
 #var strength_value: int = 0
 #var dexterity_value: int = 0
@@ -126,6 +134,7 @@ func level_up() -> void:
 	curr_level += 1
 	curr_points += 4
 	next_level_exp *= exp_multiplier
+	Refs.create_new_level_fx(global_position)
 	EventBus.on_player_stats_updated.emit()
 
 
@@ -163,3 +172,10 @@ func _on_health_component_on_dead() -> void:
 
 func _on_health_component_on_health_changed(curr_health: float) -> void:
 	EventBus.on_player_health_updated.emit(curr_health, max_health) # Replace with function body.
+
+
+func _on_enemy_attack_area_area_entered(area: Area2D) -> void:
+	var dmg = get_damage()
+	area.health_component.take_damage(dmg)
+	Refs.create_damage_fx(area.global_position)
+	Refs.create_damage_text(area.global_position, dmg)

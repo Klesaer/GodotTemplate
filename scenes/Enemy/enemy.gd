@@ -11,6 +11,7 @@ signal on_enemy_died
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var fsm: FSM = $FSM
 @onready var anim_sprite: AnimatedSprite2D = $AnimSprite
+@onready var health_bar: ProgressBar = $HealthBar
 
 
 
@@ -19,9 +20,12 @@ var enemy_zone: EnemyZone
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health_component.setup(max_health)
+	health_bar.value = 1.0
 
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		Refs.player.selected_enemy = self
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if fsm.curr_state:
 		fsm.curr_state.process_state(delta)
@@ -44,3 +48,18 @@ func select_enemy() -> void:
 
 func deselect_enemy() -> void:
 	selector.hide()
+
+
+func _on_detect_area_body_entered(body: Node2D) -> void:
+	fsm.transition_to("Follow")
+
+
+func _on_detect_area_body_exited(body: Node2D) -> void:
+	fsm.transition_to("Wander")
+
+
+func _on_health_component_on_health_changed(curr_health: float) -> void:
+	health_bar.value = curr_health / max_health
+
+func _on_health_component_on_dead() -> void:
+	queue_free()
