@@ -56,9 +56,9 @@ var selected_enemy: Enemy :
 #func _ready() -> void:
 	#setup()
 #
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		add_exp(30.0)
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_accept"):
+		#add_exp(30.0)
 
 func _process(delta: float) -> void:
 	if fsm.curr_state:

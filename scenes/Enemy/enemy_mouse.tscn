@@ -2,13 +2,42 @@
 
 [ext_resource type="Script" uid="uid://cilepqe80eelc" path="res://scenes/Enemy/enemy.gd" id="1_grfqg"]
 [ext_resource type="Texture2D" uid="uid://l58lkiu042xv" path="res://Sprites/Actor/Characters/Shadow.png" id="1_o5uld"]
+[ext_resource type="Script" uid="uid://bgs0x23pp0vmu" path="res://data/loot_data.gd" id="2_3e887"]
 [ext_resource type="Texture2D" uid="uid://dmwuj01b4ll4n" path="res://Sprites/Actor/Monsters/Mouse/SpriteSheet.png" id="2_grfqg"]
 [ext_resource type="Texture2D" uid="uid://b25swkh2ytg3p" path="res://Sprites/Selector.png" id="3_eacat"]
+[ext_resource type="Resource" uid="uid://dk6ftcupwo2sg" path="res://data/potions/item_hp_small_2.tres" id="3_fxkbx"]
+[ext_resource type="Resource" uid="uid://dqsl586foyia6" path="res://data/food/item_food_beaf.tres" id="4_h0di7"]
 [ext_resource type="PackedScene" uid="uid://bfpoe6m4nmksn" path="res://scenes/Health_component/health_component.tscn" id="4_ixhtt"]
+[ext_resource type="Resource" uid="uid://b0sjsa0n88ncw" path="res://data/potions/item_mana_small_5.tres" id="5_t4kp2"]
 [ext_resource type="Script" uid="uid://m4yak53eb6ir" path="res://scripts/fsm.gd" id="6_ixhtt"]
+[ext_resource type="Resource" uid="uid://dtpyd7ckfusel" path="res://data/food/item_food_onigiri.tres" id="6_k06wl"]
 [ext_resource type="Script" uid="uid://cpq2lilt6d281" path="res://scenes/Enemy/states/enemy_wander_state.gd" id="7_wfr8x"]
 [ext_resource type="Script" uid="uid://br77ynm0swgr1" path="res://scenes/Enemy/states/enemy_follow_state.gd" id="8_wfr8x"]
 [ext_resource type="Script" uid="uid://w1ugsvlxhsep" path="res://scenes/Enemy/states/enemy_attack_state.gd" id="9_ebm38"]
+
+[sub_resource type="Resource" id="Resource_li5hu"]
+script = ExtResource("2_3e887")
+item = ExtResource("3_fxkbx")
+amount = 5
+metadata/_custom_type_script = "uid://bgs0x23pp0vmu"
+
+[sub_resource type="Resource" id="Resource_3adk5"]
+script = ExtResource("2_3e887")
+item = ExtResource("4_h0di7")
+amount = 2
+metadata/_custom_type_script = "uid://bgs0x23pp0vmu"
+
+[sub_resource type="Resource" id="Resource_rcjf7"]
+script = ExtResource("2_3e887")
+item = ExtResource("5_t4kp2")
+amount = 3
+metadata/_custom_type_script = "uid://bgs0x23pp0vmu"
+
+[sub_resource type="Resource" id="Resource_wpjok"]
+script = ExtResource("2_3e887")
+item = ExtResource("6_k06wl")
+amount = 1
+metadata/_custom_type_script = "uid://bgs0x23pp0vmu"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfr8x"]
 atlas = ExtResource("2_grfqg")
@@ -170,9 +199,10 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Enemy" type="Area2D" unique_id=667960588]
+[node name="EnemyMouse" type="Area2D" unique_id=667960588]
 collision_layer = 4
 script = ExtResource("1_grfqg")
+loot = Array[ExtResource("2_3e887")]([SubResource("Resource_li5hu"), SubResource("Resource_3adk5"), SubResource("Resource_rcjf7"), SubResource("Resource_wpjok")])
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=253530904]
 self_modulate = Color(1, 1, 1, 0.19607843)

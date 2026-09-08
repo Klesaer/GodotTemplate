@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://b16hhm3f7t02q"]
+
+[ext_resource type="Texture2D" uid="uid://ct4ipm7qta4kp" path="res://Sprites/Ui/Skill Icon/Items & Weapon/Kunai.png" id="1_m3iov"]
+[ext_resource type="Script" uid="uid://c33ix3vy0ojrt" path="res://data/skills/skill_data.gd" id="2_prn3o"]
+
+[resource]
+script = ExtResource("2_prn3o")
+mana_cost = 3.0
+base_dmg = 12.0
+icon = ExtResource("1_m3iov")
+id = "kunai"
+name = "Kunai"
+description = "Shoot kunai
+
+"
+price = 30
+metadata/_custom_type_script = "uid://c33ix3vy0ojrt"

@@ -7,6 +7,8 @@ signal on_enemy_died
 @export var damage: float = 10.0
 @export var exp_amount: float = 10.0
 
+@export var loot: Array[LootData]
+
 @onready var selector: Sprite2D = $Selector
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var fsm: FSM = $FSM
@@ -42,9 +44,22 @@ func update_animation(dir: Vector2) -> void:
 		else:
 			anim_sprite.play("move_up")
 
+func drop_loot() -> void:
+	var random_data: LootData = loot.pick_random()
+	var drop_item: DropItem = Refs.DROP_ITEM_SCENE.instantiate()
+	
+	var away_dir: Vector2 = (global_position - Refs.player.global_position).normalized()
+	var drop_pos: Vector2 = global_position + away_dir
+	
+	drop_item.load_item(random_data)
+	drop_item.global_position = drop_pos
+	get_tree().root.call_deferred("add_child", drop_item) 
+	
+	on_enemy_died.emit()
+
 func select_enemy() -> void:
 	selector.show()
-	
+
 
 func deselect_enemy() -> void:
 	selector.hide()
@@ -62,4 +77,6 @@ func _on_health_component_on_health_changed(curr_health: float) -> void:
 	health_bar.value = curr_health / max_health
 
 func _on_health_component_on_dead() -> void:
+	drop_loot()
+	Refs.player.add_exp(exp_amount)
 	queue_free()

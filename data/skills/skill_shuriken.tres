@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://qfmnfeklyket"]
+
+[ext_resource type="Texture2D" uid="uid://qjsmi71b0p78" path="res://Sprites/Ui/Skill Icon/Items & Weapon/Shuriken.png" id="1_p1w43"]
+[ext_resource type="Script" uid="uid://c33ix3vy0ojrt" path="res://data/skills/skill_data.gd" id="2_nuf3s"]
+
+[resource]
+script = ExtResource("2_nuf3s")
+mana_cost = 2.0
+base_dmg = 15.0
+icon = ExtResource("1_p1w43")
+id = "shuriken"
+name = "Shuriken"
+description = "Throws spinning shurikens."
+price = 15
+metadata/_custom_type_script = "uid://c33ix3vy0ojrt"

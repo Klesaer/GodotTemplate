@@ -20,3 +20,7 @@ func _on_inventory_used_item(item: ItemData) -> void:
 	match item.id:
 		"hp_potion": Refs.player.health_component.heal(item.value)
 		"mana_potion": Refs.player.add_mana(item.value)
+
+
+func _on_equipped_skill_button_pressed() -> void:
+	pass # Replace with function body.

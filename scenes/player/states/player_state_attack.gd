@@ -11,10 +11,14 @@ var weapon_rotations: Dictionary = {
 func enter_state() -> void:
 	player.play_direction_anim("attack")
 	position_weapon()
-	player.anim_sprite.animation_finished.connect(_on_animation_finished)
 	
+	if not player.anim_sprite.animation_finished.is_connected(_on_animation_finished):
+		player.anim_sprite.animation_finished.connect(_on_animation_finished)
 
 func exit_state() -> void:
+	player.enable_weapon_collision(false)
+	player.weapon.hide()
+	
 	if player.anim_sprite.animation_finished.is_connected(_on_animation_finished):
 		player.anim_sprite.animation_finished.disconnect(_on_animation_finished)
 

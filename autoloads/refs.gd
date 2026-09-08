@@ -1,10 +1,13 @@
 extends Node
 
 var player: Player
+var hud: HUD
 
 const DAMAGE_FX_SCENE = preload("uid://byoq8oyju7ta8")
 const DAMAGE_TEXT_SCENE = preload("uid://buts36b3f3ll2")
 const NEW_LEVEL_FX_SCENE = preload("uid://cej81em3q6qg3")
+const DROP_ITEM_SCENE = preload("uid://58dm2c4pxxmh")
+
 
 func create_damage_fx(pos: Vector2) -> void:
 	create_fx_at_pos(DAMAGE_FX_SCENE, pos)

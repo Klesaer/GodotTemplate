@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://i5voksdip3np"]
+
+[ext_resource type="Texture2D" uid="uid://dniqflihccv72" path="res://Sprites/Ui/Skill Icon/Spell/RockSpike.png" id="1_efird"]
+[ext_resource type="Script" uid="uid://c33ix3vy0ojrt" path="res://data/skills/skill_data.gd" id="2_hcwjg"]
+
+[resource]
+script = ExtResource("2_hcwjg")
+mana_cost = 10.0
+base_dmg = 25.0
+icon = ExtResource("1_efird")
+id = "rock_spike"
+name = "Rock Spike"
+description = "Summons a rock spike.
+
+"
+price = 30
+metadata/_custom_type_script = "uid://c33ix3vy0ojrt"
