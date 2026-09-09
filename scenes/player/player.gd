@@ -56,14 +56,38 @@ var selected_enemy: Enemy :
 #func _ready() -> void:
 	#setup()
 #
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("ui_accept"):
-		#add_exp(30.0)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skill_1"):
+		use_skill(0)
+	elif event.is_action_pressed("skill_2"):
+		use_skill(1)
+	elif event.is_action_pressed("skill_3"):
+		use_skill(2)
+	elif event.is_action_pressed("skill_4"):
+		use_skill(3)
 
 func _process(delta: float) -> void:
 	if fsm.curr_state:
 		fsm.curr_state.process_state(delta)
+
+func use_skill(index: int) -> void:
+	if index < 0 or index >= GameData.skill_slots.size():
+		return
 		
+	var skill: SkillData = GameData.skill_slots[index]
+	if not skill: return
+	if not selected_enemy: return
+	if curr_mana < skill.mana_cost: return
+	
+	use_mana(skill.mana_cost)
+	var total_dmg = get_damage(skill.base_dmg)
+	selected_enemy.health_component.take_damage(total_dmg)
+	var exp_effect: Node2D = skill.explotion_effect.instantiate()
+	exp_effect.global_position = selected_enemy.global_position
+	get_tree().root.add_child(exp_effect)
+	Refs.create_damage_text(selected_enemy.global_position, total_dmg)
+
+
 func is_moving() ->bool:
 	var move_input=["move_down", "move_up","move_left","move_right"]
 	for input in move_input:
@@ -167,12 +191,10 @@ func enable_weapon_collision(value: bool) -> void:
 
 
 func _on_health_component_on_dead() -> void:
-	queue_free() # Replace with function body.
-
+	queue_free() 
 
 func _on_health_component_on_health_changed(curr_health: float) -> void:
-	EventBus.on_player_health_updated.emit(curr_health, max_health) # Replace with function body.
-
+	EventBus.on_player_health_updated.emit(curr_health, max_health) 
 
 func _on_enemy_attack_area_area_entered(area: Area2D) -> void:
 	var dmg = get_damage()

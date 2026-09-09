@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://jo5kljjbq8s4" path="res://scenes/ui/skills_panel/skills_panel.tscn" id="15_05g26"]
 [ext_resource type="PackedScene" uid="uid://bixpqmf8o0dlx" path="res://scenes/ui/inventory_panel/inventory_slot.tscn" id="18_oblsv"]
 [ext_resource type="PackedScene" uid="uid://58dm2c4pxxmh" path="res://scenes/drop_item/drop_item.tscn" id="18_uos3g"]
+[ext_resource type="PackedScene" uid="uid://bemckblekeoh8" path="res://scenes/ui/dialogue_panel/dialogue_panel.tscn" id="19_00m3g"]
 [ext_resource type="Resource" uid="uid://dk6ftcupwo2sg" path="res://data/potions/item_hp_small_2.tres" id="19_oblsv"]
 [ext_resource type="Resource" uid="uid://b0sjsa0n88ncw" path="res://data/potions/item_mana_small_5.tres" id="21_lheq0"]
 [ext_resource type="Resource" uid="uid://csxnvsu0y3sbi" path="res://data/equipment/item_equip_helmet_common.tres" id="22_b8qpp"]
@@ -29,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://b23x8urv65b8f" path="res://scenes/Enemy/enemy_slime2.tscn" id="27_rcjf7"]
 [ext_resource type="PackedScene" uid="uid://dparkg87a3dbf" path="res://scenes/Enemy/enemy_snake.tscn" id="28_666uc"]
 [ext_resource type="PackedScene" uid="uid://ysw0e5n31u2p" path="res://scenes/Enemy/enemy_greyTrex.tscn" id="29_wpjok"]
+[ext_resource type="PackedScene" uid="uid://cqr7yko5f64dk" path="res://scenes/npc/npc_simple.tscn" id="30_00m3g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7xra"]
 texture = ExtResource("1_pd0w3")
@@ -2235,10 +2237,10 @@ custom_minimum_size = Vector2(150, 27)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -350.0
-offset_top = 20.0
-offset_right = 350.0
-offset_bottom = 47.0
+offset_left = -620.0
+offset_top = 80.0
+offset_right = -470.0
+offset_bottom = 107.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_lheq0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_b8qpp")
@@ -2461,6 +2463,7 @@ layout_mode = 2
 
 [node name="SkillsPanel" parent="HUD/Panels" unique_id=1145669074 instance=ExtResource("15_05g26")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="GrabbedSlot" parent="HUD" unique_id=340484400 instance=ExtResource("18_oblsv")]
@@ -2476,6 +2479,9 @@ offset_right = -205.0
 offset_bottom = -468.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="DialoguePanel" parent="HUD" unique_id=2021897668 instance=ExtResource("19_00m3g")]
+visible = false
 
 [node name="DropItem" parent="." unique_id=717339649 instance=ExtResource("18_uos3g")]
 position = Vector2(64, -21)
@@ -2547,6 +2553,11 @@ max_enemies = 20
 position = Vector2(567, 217.85938)
 shape = SubResource("RectangleShape2D_epa1c")
 debug_color = Color(0, 0.6, 0.69803923, 0.23529412)
+
+[node name="NPCs" type="Node2D" parent="." unique_id=572286656]
+
+[node name="NPCSimple" parent="NPCs" unique_id=1938672492 instance=ExtResource("30_00m3g")]
+position = Vector2(-87, -52)
 
 [connection signal="pressed" from="HUD/MainButtons/MarginContainer/HBoxContainer/EquipmentButton" to="HUD" method="_on_equipment_button_pressed"]
 [connection signal="pressed" from="HUD/MainButtons/MarginContainer/HBoxContainer/InventoryButton" to="HUD" method="_on_inventory_button_pressed"]

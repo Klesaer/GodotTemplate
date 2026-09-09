@@ -3,7 +3,6 @@ class_name HUD
 
 @export var skill_buttons: Array[EquippedSkillButton]
 
-
 @onready var equipment_panel: EquipmentPanel = %EquipmentPanel
 @onready var inventory_panel: InventoryPanel = %InventoryPanel
 @onready var stats_panel: StatsPanel = %StatsPanel
@@ -15,8 +14,6 @@ class_name HUD
 
 @onready var health_label: Label = %HealthLabel
 @onready var mana_label: Label = %ManaLabel
-
-
 
 
 func _ready() -> void:

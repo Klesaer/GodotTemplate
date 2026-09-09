@@ -85,5 +85,3 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=2099846023]
 sprite_frames = SubResource("SpriteFrames_r7nut")
-frame = 0
-frame_progress = 0.0
