@@ -19,6 +19,7 @@ func take_damage(value: float) -> void:
 	on_health_changed.emit(curr_health)
 	
 	if curr_health <=0:
+		print("Player is dead.")
 		on_dead.emit()
 	return
 

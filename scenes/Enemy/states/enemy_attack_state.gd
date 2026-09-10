@@ -28,13 +28,9 @@ func process_state(delta: float) -> void:
 func apply_damage() -> void:
 	var dist = enemy.global_position.distance_to(Refs.player.global_position)
 	print("apply_damage called, dist = ", dist)
-	if dist <= 25.0:
+	if dist <= 15.0:
 		print("apply enemy damage = ", enemy.damage)
 		Refs.player.health_component.take_damage(enemy.damage)
 		Refs.create_damage_fx(Refs.player.global_position)
 		Refs.create_damage_text(Refs.player.global_position, enemy.damage)
-	
-	
-	
-	
 	

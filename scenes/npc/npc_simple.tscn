@@ -38,9 +38,18 @@ sprite_frames = SubResource("SpriteFrames_ypw36")
 animation = &"idle_down"
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=203958020]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+path_postprocessing = 1
+debug_enabled = true
+debug_path_custom_color = Color(0.9976527, 0, 0.15429032, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1781987592]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_iwp5r")
 
+[node name="Timer" type="Timer" parent="." unique_id=985639546]
+one_shot = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

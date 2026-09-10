@@ -60,10 +60,8 @@ func drop_loot() -> void:
 func select_enemy() -> void:
 	selector.show()
 
-
 func deselect_enemy() -> void:
 	selector.hide()
-
 
 func _on_detect_area_body_entered(body: Node2D) -> void:
 	fsm.transition_to("Follow")

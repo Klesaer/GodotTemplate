@@ -24,13 +24,10 @@ func _ready() -> void:
 func load_data(data: SkillData) -> void:
 	skill = data
 	skill_icon.texture = data.icon
-	print("skill data is valid.")
 
 func enable_skill(value: bool) -> void:
 	skill_icon.self_modulate = Color.WHITE if value else Color("787878")
 	lock.visible = not value
-	
-
 
 func _on_pressed() -> void:
 	if not is_unlocked:

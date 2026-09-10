@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://iv2fcttrxeha"]
+
+[ext_resource type="Script" uid="uid://cb31i5lrsej8m" path="res://scenes/Town/portal.gd" id="1_ir2u4"]
+
+[node name="Portal" type="Area2D" unique_id=470253270]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ir2u4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -52,10 +52,14 @@ var selected_enemy: Enemy :
 #var dexterity_value: int = 0
 #var intelligence_value: int = 0
 
-#Test exp add system
-#func _ready() -> void:
-	#setup()
-#
+func _ready() -> void:
+	if not health_component.on_health_changed.is_connected(
+		_on_health_component_on_health_changed
+	):
+		health_component.on_health_changed.connect(
+			_on_health_component_on_health_changed
+		)
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("skill_1"):
 		use_skill(0)
